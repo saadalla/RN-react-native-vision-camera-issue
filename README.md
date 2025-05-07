@@ -1,20 +1,19 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+This is [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
 # Getting Started
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+This project is used to demonstrate an issue with react-native-camera
+The issue is related to building a bundle for android (.aab)
+Other than that the app is working fine.
+
 
 ## Step 1: Start Metro
-
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
-
-To start the Metro dev server, run the following command from the root of your React Native project:
 
 ```sh
 # Using npm
 npm start
 
-# OR using Yarn
+# using Yarn
 yarn start
 ```
 
@@ -62,36 +61,23 @@ If everything is set up correctly, you should see your new app running in the An
 
 This is one way to run your app — you can also build it directly from Android Studio or Xcode.
 
-## Step 3: Modify your app
+## Step 3: Reproducing the problem
 
-Now that you have successfully run the app, let's make changes!
+1. from your project folder change to android folder
+cd andoid
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+2. Attempt bundle generation (.aab)
+./gradlew bundleRelease
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+3. You get the build failure message below:
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+Task :react-native-vision-camera:externalNativeBuildRelease FAILED
 
-## Congratulations! :tada:
+...
 
-You've successfully run and modified your React Native App. :partying_face:
+FAILURE: Build failed with an exception.
 
-### Now what?
+* What went wrong:
+Execution failed for task ':react-native-vision-camera:externalNativeBuildRelease'.
+> java.io.FileNotFoundException: /Users/development/rntest/node_modules/react-native-vision-camera/android/build/intermediates/cxx/RelWithDebInfo/5s2a6h5u/obj/armeabi-v7a/libVisionCamera.so (No such file or directory)
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
